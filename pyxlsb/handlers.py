@@ -119,6 +119,8 @@ class CellHandler(Handler):
       val = reader.read_int()
     elif recid == biff12.FORMULA_STRING:
       val = reader.read_string()
+    elif recid == biff12.SPECIAL_STRING:
+      val = reader.read_special_string()
     elif recid == biff12.FORMULA_FLOAT:
       val = reader.read_double()
     elif recid == biff12.FORMULA_BOOL:

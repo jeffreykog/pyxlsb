@@ -80,6 +80,17 @@ class RecordReader(object):
       return None
     return buff.decode(self._enc, errors='replace')
 
+  def read_special_string(self):
+    self.skip(1)
+    l = self.read_int()
+    if l is None:
+      return None
+    buff = self.read(l * 2)
+    if len(buff) < l * 2:
+      return None
+    self.skip(12)  # No functional need, but there are 12 more bytes in the cell after reading the string
+    return buff.decode(self._enc, errors='replace')
+
 
 class BIFF12Reader(object):
   handlers = {
@@ -110,6 +121,7 @@ class BIFF12Reader(object):
     biff12.BOOL:            CellHandler(),
     biff12.FLOAT:           CellHandler(),
     biff12.STRING:          CellHandler(),
+    biff12.SPECIAL_STRING:  CellHandler(),
     biff12.FORMULA_STRING:  CellHandler(),
     biff12.FORMULA_FLOAT:   CellHandler(),
     biff12.FORMULA_BOOL:    CellHandler(),

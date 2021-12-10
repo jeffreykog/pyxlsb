@@ -29,6 +29,7 @@ FORMULA_FLOAT             = 0x0009
 FORMULA_BOOL              = 0x000A
 FORMULA_BOOLERR           = 0x000B
 COL                       = 0x003C
+SPECIAL_STRING            = 0x003E
 WORKSHEET                 = 0x0181
 WORKSHEET_END             = 0x0182
 SHEETVIEWS                = 0x0185

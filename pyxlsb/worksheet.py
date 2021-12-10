@@ -72,6 +72,8 @@ class Worksheet(object):
           row[item[1].c] = Cell(row_num, item[1].c, self._stringtable[item[1].v])
         else:
           row[item[1].c] = Cell(row_num, item[1].c, item[1].v)
+      elif item[0] == biff12.SPECIAL_STRING:
+        row[item[1].c] = Cell(row_num, item[1].c, item[1].v)
       elif item[0] == biff12.SHEETDATA_END:
         if row is not None:
           yield row
